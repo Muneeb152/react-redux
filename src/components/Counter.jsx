@@ -3,8 +3,9 @@ import { useSelector, connect, useDispatch } from "react-redux";
 import "./counter.module.css";
 import { type } from "@testing-library/user-event/dist/type";
 
-const Counter = () => {
+const Counter = (state = { counter: 0, showCounter: true }, action) => {
   const counter = useSelector((state) => state.counter);
+  const show = useSelector((state) => state.showCounter);
   const dispatch = useDispatch();
 
   const incrementHandler = () => {
@@ -24,13 +25,17 @@ const Counter = () => {
       type: "decrement",
     });
   };
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({
+      type: "toggle",
+    });
+  };
 
   return (
     <main>
       <h1>Redux Counter</h1>
       <div>Counter Value</div>
-      <div>{counter}</div>
+      {show && <div>{counter}</div>}
       <div className="counter-button">
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={increaseHandler}>Increase by 10</button>
