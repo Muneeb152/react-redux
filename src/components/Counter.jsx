@@ -2,13 +2,13 @@ import { Component } from "react";
 import { useSelector, connect, useDispatch } from "react-redux";
 import "./counter.module.css";
 import { type } from "@testing-library/user-event/dist/type";
-import { counterActions } from "../store";
+import { counterActions } from "../store/counter";
 
 // const Counter = (state = { counter: 0, showCounter: true }, action) => {
 const Counter = () => {
   const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter);
-  const show = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const show = useSelector((state) => state.counter.showCounter);
 
   // const incrementHandler = () => {
   //   dispatch({
