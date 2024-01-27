@@ -2,35 +2,50 @@ import { Component } from "react";
 import { useSelector, connect, useDispatch } from "react-redux";
 import "./counter.module.css";
 import { type } from "@testing-library/user-event/dist/type";
+import { counterActions } from "../store";
 
-const Counter = (state = { counter: 0, showCounter: true }, action) => {
+// const Counter = (state = { counter: 0, showCounter: true }, action) => {
+const Counter = () => {
+  const dispatch = useDispatch();
   const counter = useSelector((state) => state.counter);
   const show = useSelector((state) => state.showCounter);
-  const dispatch = useDispatch();
+
+  // const incrementHandler = () => {
+  //   dispatch({
+  //     type: "increment",
+  //   });
+  // };
+
+  // const increaseHandler = () => {
+  //   dispatch({
+  //     type: "increase",
+  //     amount: 10,
+  //   });
+  // };
+  // const decrementHandler = () => {
+  //   dispatch({
+  //     type: "decrement",
+  //   });
+  // };
+  // const toggleCounterHandler = () => {
+  //   dispatch({
+  //     type: "toggle",
+  //   });
+  // };
 
   const incrementHandler = () => {
-    dispatch({
-      type: "increment",
-    });
+    dispatch(counterActions.increment());
   };
 
   const increaseHandler = () => {
-    dispatch({
-      type: "increase",
-      amount: 10,
-    });
+    dispatch(counterActions.increase(10)); // {type: SOME_UNIQUE_IDENTIFIER, payload:10 }
   };
   const decrementHandler = () => {
-    dispatch({
-      type: "decrement",
-    });
+    dispatch(counterActions.decrement());
   };
   const toggleCounterHandler = () => {
-    dispatch({
-      type: "toggle",
-    });
+    dispatch(counterActions.toggleCounter());
   };
-
   return (
     <main>
       <h1>Redux Counter</h1>
