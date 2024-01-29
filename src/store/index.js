@@ -2,6 +2,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./counter";
 import authReducer from "./auth";
+import uiSlice from "./ui-slice";
 
 // const counterReducer = (state = intialState, action) => {
 //   if (action.type === "increment") {
@@ -42,6 +43,7 @@ const store = configureStore({
   reducer: {
     counter: counterReducer,
     auth: authReducer,
+    ui: uiSlice.reducer
   },
 });
 

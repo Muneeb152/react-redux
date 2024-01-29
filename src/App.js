@@ -2,7 +2,8 @@ import { Fragment } from "react";
 import logo from "./logo.svg";
 import Counter from "./components/Counter";
 import "./App.css";
-import { UseSelector, useSelector } from "react-redux";
+import { useSelector, Provider } from "react-redux";
+import store from "./store";
 // import Header from './components/Header';
 // import Auth from './components/Auth';
 // import UserProfile from './components/UserProfile';
@@ -14,7 +15,9 @@ function App() {
       {/* <Header />
       {!isAuthenticated && <Auth />}
       {isAuth && <UserProfile />} */}
-      <Counter />
+      <Provider store={store}>
+        <Counter />
+      </Provider>
     </Fragment>
   );
 }
